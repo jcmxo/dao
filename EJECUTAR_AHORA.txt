@@ -1,0 +1,47 @@
+===========================================
+  CÓMO EJECUTAR EL PROYECTO DAO - RESUMEN
+===========================================
+
+TERMINAL 1 (dejar corriendo):
+-----------------------------
+anvil
+
+Guarda la primera dirección y clave privada que aparezca.
+
+TERMINAL 2:
+-----------
+cd /mnt/c/Users/jcmxo/dao/sc
+forge script script/DeployLocal.s.sol:DeployLocal --rpc-url http://127.0.0.1:8545 --broadcast
+
+Copia las direcciones de los contratos que aparezcan.
+
+CONFIGURAR:
+-----------
+cd /mnt/c/Users/jcmxo/dao/web
+nano .env.local
+
+Pega esto (reemplaza las direcciones):
+--------------------------------------
+NEXT_PUBLIC_DAO_ADDRESS=0x...
+NEXT_PUBLIC_FORWARDER_ADDRESS=0x...
+NEXT_PUBLIC_CHAIN_ID=31337
+RELAYER_PRIVATE_KEY=0x...
+RELAYER_ADDRESS=0x...
+RPC_URL=http://127.0.0.1:8545
+DAEMON_INTERVAL_SECONDS=60
+
+TERMINAL 2 (o nueva):
+---------------------
+cd /mnt/c/Users/jcmxo/dao/web
+npm install  (solo primera vez)
+npm run dev
+
+NAVEGADOR:
+----------
+http://localhost:3000
+
+Para más detalles, lee:
+- INICIO_RAPIDO.md (guía detallada)
+- COMO_EJECUTAR.md (guía completa)
+- COMANDOS_RAPIDOS.md (referencia rápida)
+
