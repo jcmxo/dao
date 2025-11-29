@@ -6,6 +6,7 @@ export const DAO_ABI = [
   "function getProposal(uint256 proposalId) external view returns (tuple(uint256 id, address recipient, uint256 amount, uint256 deadline, uint256 votesFor, uint256 votesAgainst, uint256 votesAbstain, bool executed, uint256 executedAt))",
   "function getUserBalance(address user) external view returns (uint256)",
   "function totalBalance() external view returns (uint256)",
+  "function nextProposalId() external view returns (uint256)",
   "function canVote(address user) external view returns (bool)",
   "function canCreateProposal(address user) external view returns (bool)",
   "function MIN_VOTING_BALANCE() external view returns (uint256)",

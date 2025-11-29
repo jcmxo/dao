@@ -109,8 +109,15 @@ export function FundingPanel() {
 
   if (!isConnected) {
     return (
-      <div className="p-6 bg-gray-800 rounded-lg">
-        <p className="text-white">Please connect your wallet to fund the DAO</p>
+      <div className="p-6 md:p-8 glass-effect rounded-2xl card-hover shadow-xl">
+        <div className="text-center py-8">
+          <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-indigo-500/10 flex items-center justify-center">
+            <svg className="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
+          <p className="text-gray-300 font-medium">Please connect your wallet to fund the DAO</p>
+        </div>
       </div>
     );
   }
@@ -122,43 +129,48 @@ export function FundingPanel() {
     : "0.00";
 
   return (
-    <div className="p-6 bg-gray-800 rounded-lg">
-      <h2 className="text-2xl font-bold text-white mb-4">DAO Treasury</h2>
+    <div className="p-6 md:p-8 glass-effect rounded-2xl card-hover shadow-xl">
+      <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 flex items-center gap-2">
+        <span className="w-1 h-8 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full"></span>
+        DAO Treasury
+      </h2>
       
       {/* Treasury Balance - Prominent */}
-      <div className="mb-6">
-        <div className="text-gray-400 text-sm mb-1">Treasury Balance</div>
-        <div className="text-3xl font-bold text-blue-400">{totalBalanceNum.toFixed(4)} ETH</div>
+      <div className="mb-6 p-4 bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-xl border border-indigo-500/20">
+        <div className="text-gray-400 text-xs uppercase tracking-wider mb-2 font-semibold">Treasury Balance</div>
+        <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+          {totalBalanceNum.toFixed(4)} ETH
+        </div>
       </div>
 
       {/* Total Proposals */}
-      <div className="mb-6 p-3 bg-gray-700 rounded-lg">
+      <div className="mb-6 p-4 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-xl border border-emerald-500/20">
         <div className="flex justify-between items-center">
-          <span className="text-gray-300">Total Proposals</span>
-          <span className="text-2xl font-bold text-green-400">{totalProposals}</span>
+          <span className="text-gray-300 text-sm font-medium">Total Proposals</span>
+          <span className="text-2xl md:text-3xl font-bold text-emerald-400">{totalProposals}</span>
         </div>
       </div>
 
       {/* Your Balance in DAO */}
       {isConnected && (
-        <div className="mb-6 p-3 bg-purple-900/30 rounded-lg border border-purple-500/30">
-          <div className="text-gray-300 text-sm mb-1">Your Balance in DAO</div>
-          <div className="text-xl font-bold text-purple-400">{userBalanceNum.toFixed(4)} ETH</div>
-          <div className="text-gray-400 text-sm mt-1">{userPercentage}% of total</div>
+        <div className="mb-6 p-4 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl border border-purple-500/20">
+          <div className="text-gray-300 text-xs uppercase tracking-wider mb-1 font-semibold">Your Balance in DAO</div>
+          <div className="text-xl md:text-2xl font-bold text-purple-400 mb-1">{userBalanceNum.toFixed(4)} ETH</div>
+          <div className="text-gray-400 text-sm">{userPercentage}% of total</div>
         </div>
       )}
 
       {/* Deposit Section */}
       {isConnected && (
         <>
-          <div className="mb-4">
-            <label className="block text-white mb-2">Deposit ETH to DAO</label>
+          <div className="mb-5">
+            <label className="block text-white mb-2 font-medium text-sm">Deposit ETH to DAO</label>
             <input
               type="number"
               step="0.001"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              className="w-full px-4 py-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all placeholder-gray-500"
               placeholder="0.0"
             />
           </div>
@@ -166,12 +178,22 @@ export function FundingPanel() {
           <button
             onClick={handleFund}
             disabled={isLoading || !amount}
-            className="w-full px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+            className="w-full px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl hover:from-indigo-500 hover:to-purple-500 disabled:opacity-50 disabled:cursor-not-allowed font-semibold shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-[1.02] disabled:hover:scale-100"
           >
-            {isLoading ? "Processing..." : "Deposit to DAO"}
+            {isLoading ? (
+              <span className="flex items-center justify-center gap-2">
+                <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Processing...
+              </span>
+            ) : (
+              "Deposit to DAO"
+            )}
           </button>
 
-          <p className="mt-3 text-sm text-gray-400">
+          <p className="mt-4 text-xs text-gray-400 leading-relaxed">
             Depositing ETH allows you to participate in voting (requires minimum balance).
           </p>
         </>

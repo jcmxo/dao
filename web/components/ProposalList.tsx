@@ -172,41 +172,65 @@ export function ProposalList() {
 
   if (!isConnected) {
     return (
-      <div className="p-6 bg-gray-800 rounded-lg">
-        <p className="text-white">Please connect your wallet to view proposals</p>
+      <div className="p-8 glass-effect rounded-2xl card-hover shadow-xl">
+        <div className="text-center py-12">
+          <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-indigo-500/10 flex items-center justify-center">
+            <svg className="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          </div>
+          <p className="text-gray-300 font-medium">Please connect your wallet to view proposals</p>
+        </div>
       </div>
     );
   }
 
   if (isLoading) {
     return (
-      <div className="p-6 bg-gray-800 rounded-lg">
-        <p className="text-white">Loading proposals...</p>
+      <div className="p-8 glass-effect rounded-2xl shadow-xl">
+        <div className="text-center py-12">
+          <svg className="animate-spin h-8 w-8 text-indigo-400 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          <p className="text-gray-300 font-medium">Loading proposals...</p>
+        </div>
       </div>
     );
   }
 
   if (proposals.length === 0) {
     return (
-      <div className="p-6 bg-gray-800 rounded-lg">
-        <p className="text-white">No proposals yet. Create one to get started!</p>
+      <div className="p-8 glass-effect rounded-2xl card-hover shadow-xl border border-gray-700/50">
+        <div className="text-center py-12">
+          <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-indigo-500/10 to-purple-500/10 flex items-center justify-center">
+            <svg className="w-10 h-10 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <p className="text-gray-300 font-medium text-lg mb-2">No proposals yet</p>
+          <p className="text-gray-400 text-sm">Create one to get started!</p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="space-y-4">
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-bold text-white">Proposals</h2>
-        <div className="flex items-center gap-2">
+    <div className="space-y-6">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+        <h2 className="text-2xl md:text-3xl font-bold text-white flex items-center gap-2">
+          <span className="w-1 h-8 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full"></span>
+          Proposals
+        </h2>
+        <div className="flex items-center gap-3 px-4 py-2 bg-indigo-500/10 rounded-xl border border-indigo-500/20">
           <input
             type="checkbox"
             id="gasless-voting-checkbox"
             checked={true}
             disabled={true}
-            className="w-4 h-4 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500"
+            className="w-5 h-5 text-indigo-600 bg-gray-800 border-gray-600 rounded focus:ring-indigo-500 focus:ring-2 cursor-not-allowed"
           />
-          <label htmlFor="gasless-voting-checkbox" className="text-white text-sm">
+          <label htmlFor="gasless-voting-checkbox" className="text-white text-sm font-medium">
             Gasless voting
           </label>
         </div>
