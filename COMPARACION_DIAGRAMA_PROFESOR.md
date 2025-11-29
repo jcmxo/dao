@@ -184,3 +184,4 @@ El diagrama del profesor es una **descripción perfecta** de cómo funciona este
 
 **¡Tu proyecto está bien alineado con la teoría!** ✅
 
+

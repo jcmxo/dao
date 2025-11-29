@@ -288,3 +288,4 @@ DAOVoting dao = new DAOVoting(address(forwarder));
 
 **¡MinimalForwarder está completamente integrado y funcionando!** 🚀
 
+

@@ -271,3 +271,4 @@ Contador que previene replay attacks:
 
 **En pocas palabras:** MinimalForwarder es el **"mensajero"** que toma tu firma, verifica que eres tú, y ejecuta tu transacción en el DAO sin que tengas que pagar gas. 🚀
 
+
