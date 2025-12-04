@@ -232,10 +232,11 @@ Este proyecto está bajo la Licencia MIT.
 
 ## 👥 Autores
 
-- Tu Nombre
+- Juan Carlos Martin Murcia.
 
 ## 🙏 Agradecimientos
 
+- CodeCrypto por la enseñanza
 - OpenZeppelin por los contratos base
 - Foundry por las herramientas de desarrollo
 - Next.js por el framework frontend
